@@ -44,19 +44,82 @@
         {% comment %}
             The central-rail segment starts here!
         {% endcomment %}
-
-       <div class="eight wide column">
+ <style>
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #4a4a4d;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+th,
+td {
+  padding: 10px 15px;
+  vertical-align: middle;
+}
+thead {
+  background: #395870;
+  background: black;
+  color: #fff;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+th:first-child {
+  border-top-left-radius: 5px;
+  text-align: left;
+}
+th:last-child {
+  border-top-right-radius: 5px;
+}
+tbody tr:nth-child(even) {
+  background: #f0f0f2;
+}
+td {
+  border-bottom: 1px solid #cecfd5;
+  border-right: 1px solid #cecfd5;
+}
+td:first-child {
+  border-left: 1px solid #cecfd5;
+}
+.book-title {
+  color: #395870;
+  display: block;
+}
+.text-offset {
+  color: #7c7c80;
+  font-size: 12px;
+}
+.item-stock,
+.item-qty {
+  text-align: center;
+}
+.item-price {
+  text-align: right;
+}
+.item-multiple {
+  display: block;
+}
+tfoot {
+  text-align: right;
+}
+tfoot tr:last-child {
+  background: #f0f0f2;
+  color: #395870;
+  font-weight: bold;
+}
+tfoot tr:last-child td:first-child {
+  border-bottom-left-radius: 5px;
+}
+tfoot tr:last-child td:last-child {
+  border-bottom-right-radius: 5px;
+}
+</style>
+<div class="eight wide column">
 
           <div style="overflow-x:auto;">
-          <table class="ui very basic collapsing celled sortable table "
-            style="padding-left: 2.5%;overflow-x:scroll;
-                                                               padding-right: 2.5%;
-                                                               padding-top: 1%;
-                                                               padding-bottom: 1.5%;
-                                                               margin: auto;">
-         <thead>
-         <tr>
-             <th>
+<table>
+  <thead>
+    <tr>
+     <th>
               id
              </th>
              <th>
@@ -91,10 +154,10 @@
              <th class="four wide column">
                 Approval
              </th>
-         </tr>
-         </thead>
-         <tbody>
-           {% csrf_token %}
+    </tr>
+  </thead>
+  <tbody>
+     {% csrf_token %}
        {% for data in alldata  %}
        <tr>
          <td>
@@ -132,113 +195,20 @@
           </td>
          </tr>
          {% endfor %}
-           </tbody>
-         </table>
-            </div>
-          </div>
-
-
-
-
-
-
-                    <div style="overflow-x:auto;">
-                    <table class="ui very basic collapsing celled sortable table "
-                      style="padding-left: 2.5%;overflow-x:scroll;
-                                                                         padding-right: 2.5%;
-                                                                         padding-top: 1%;
-                                                                         padding-bottom: 1.5%;
-                                                                         margin: auto;">
-                   <thead>
-                   <tr>
-                       <th>
-                        id
-                       </th>
-                       <th>
-                          Indentor name
-                       </th>
-                       <th>
-                          Item name
-                       </th>
-                       <th>
-                          Expected cost
-                       </th>
-                       <th>
-                           quantity
-                       </th>
-                       <th>
-                            Purpose
-                       </th>
-                       <th>
-                            Intended purchase date
-                       </th>
-
-                       <th class="three wide column">
-                          Expected date
-                       </th>
-                       <th class="three wide column">
-                          Amount
-                       </th>
-
-                       <th class="three wide column">
-                          Nature
-                       </th>
-                       <th class="four wide column">
-                          Approval
-                       </th>
-                   </tr>
-                   </thead>
-                   <tbody>
-                     {% csrf_token %}
-                 {% for data in alldata2  %}
-                 <tr>
-                   <td>
-                     {{ data.id}}
-                   </td>
-                   <td>
-                     {{data.indentor_name}}
-                   </td>
-                    <td>
-                       {{data.item_name}}
-                    </td>
-                    <td>
-                        {{data.expected_cost}}
-                    </td>
-                    <td>
-                        {{data.quantity}}
-                    </td>
-                    <td>
-                        {{data.purpose}}
-                    </td>
-                    <td>
-                        {{data.purchase_date}}
-                    </td>
-                    <td>
-                        {{data.amount}}
-                    </td>
-                    <td>
-                        {{data.nature_of_item1}}
-                    </td>
-                    <td>
-                        {{data.registrar_approve_tag}}
-                    </td>
-                    <td>
-                       <button  class="approveme" m_id="{{data.id}}" >Fwd to Director</button>
-                    </td>
-                   </tr>
-                   {% endfor %}
-                     </tbody>
-                   </table>
-                      </div>
-
-
-
-
-
-
-
+     
+  </tbody>
+   
+</table>
 </div>
+          </div>
+</html>
 
+
+
+
+
+
+                     
 <script>
 
 console.log("Hello world!");
